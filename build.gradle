@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'spring.ai.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation "org.springframework.ai:spring-ai-openai:1.0.0-M6"
+	implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter:1.0.0-M6")
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.projectlombok:lombok:1.18.38'
+	annotationProcessor 'org.projectlombok:lombok:1.18.38'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
